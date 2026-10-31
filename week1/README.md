@@ -1,4 +1,6 @@
-# Week 1: Network Lab Setup
+# Week 1: Cybersecurity Lab Setup
+
+**Networkwalks - B084L**
 
 ## Objective
 
@@ -66,7 +68,18 @@ Result: 4 packets sent, 4 received, **0% loss**, response time < 1 ms. TTL = 64,
 
 ![Ping from Windows to Kali](images/5.png)
 
-> Note: I originally typed `10.0.04`, which Windows interpreted as `10.0.0.4`. It's better to type the full address to avoid mistakes.
+## Network Diagram
+
+```
+            NatNetwork (10.0.0.0/24)
+                     |
+        +------------+------------+
+        |                         |
+  Kali Linux                 Windows 10
+  10.0.0.4                   10.0.0.3
+        \                         /
+         \---- Gateway 10.0.0.1 ----/
+```
 
 ## Conclusion
 
