@@ -24,7 +24,7 @@ In VirtualBox: **File > Tools > Network Manager > NAT Networks > Create**
 - **Enable DHCP**: checked
 - **Enable IPv6**: unchecked
 
-![NAT Network configuration](screenshots/05_nat_network.png)
+![NAT Network configuration](images/1.png)
 
 ## 2. Configuring the VM Network Adapters
 
