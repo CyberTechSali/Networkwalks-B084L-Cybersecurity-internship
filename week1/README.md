@@ -35,7 +35,7 @@ For each VM: **Settings > Network > Adapter 1**
 - **Promiscuous Mode**: `Allow All`
 - **Virtual Cable Connected**: checked
 
-![vm-win10 network settings](screenshots/04_vm_win10_settings.png)
+![vm-win10 network settings](images/2.png)
 
 > `Allow All` promiscuous mode lets a VM see all traffic on the virtual network, which will be useful for packet analysis later.
 
@@ -48,11 +48,11 @@ For each VM: **Settings > Network > Adapter 1**
 
 **Kali** (`ifconfig` command):
 
-![Kali IP address](screenshots/01_kali_ifconfig.png)
+![Kali IP address](images/3.png)
 
 **Windows 10** (`ipconfig` command):
 
-![Windows IP address](screenshots/02_win10_ipconfig.png)
+![Windows IP address](images/4.png)
 
 ## 4. Connectivity Test
 
@@ -64,7 +64,7 @@ ping 10.0.0.4
 
 Result: 4 packets sent, 4 received, **0% loss**, response time < 1 ms. TTL = 64, which is consistent with a Linux system.
 
-![Ping from Windows to Kali](screenshots/03_ping.png)
+![Ping from Windows to Kali](images/5.png)
 
 > Note: I originally typed `10.0.04`, which Windows interpreted as `10.0.0.4`. It's better to type the full address to avoid mistakes.
 
