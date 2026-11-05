@@ -17,6 +17,8 @@ Build a small virtual network with **VirtualBox** made of two machines (Kali Lin
 | Network range | `10.0.0.0/24` |
 | DHCP | Enabled |
 
+> Both VMs are isolated in a NAT Network and used for lab purposes only.
+
 ## 1. Creating the NAT Network
 
 In VirtualBox: **File > Tools > Network Manager > NAT Networks > Create**
@@ -39,7 +41,7 @@ For each VM: **Settings > Network > Adapter 1**
 
 ![vm-win10 network settings](../images/2.png)
 
-> `Allow All` promiscuous mode lets a VM see all traffic on the virtual network, which will be useful for packet analysis later.
+> `Allow All` promiscuous mode lets a VM see all traffic on the virtual network, which is useful for packet analysis with Wireshark.
 
 ## 3. IP Addresses (assigned via DHCP)
 
@@ -71,25 +73,48 @@ Result: 4 packets sent, 4 received, **0% loss**, response time < 1 ms. TTL = 64,
 ## Network Diagram
 
 ```
-            NatNetwork (10.0.0.0/24)
-                     |
-        +------------+------------+
-        |                         |
-  Kali Linux                 Windows 10
-  10.0.0.4                   10.0.0.3
-        \                         /
-         \---- Gateway 10.0.0.1 ----/
+              Internet
+                 |
+        Gateway / NAT 10.0.0.1
+                 |
+      NatNetwork (10.0.0.0/24)
+         |                |
+    Kali Linux       Windows 10
+    10.0.0.4         10.0.0.3
 ```
+
+## Bonus: Wireshark SOC Labs
+
+In addition to the required setup, I completed extra labs from the Networkwalks Wireshark module (October 31, 2026).
+
+| Lab | Topic | Score |
+|---|---|---|
+| Lab 3 | Identify the attacker's IP (SYN filter) | 90/100 |
+| Lab 4 | Follow TCP Stream | 90/100 |
+| Lab 5 | Follow TCP Stream, part 2 | 100/100 |
+| Lab 6 | HTTP plain text credentials | 100/100 |
+
+**Skills practiced:**
+
+- Capturing traffic and applying display filters
+- Identifying an attacker and a target from SYN packets
+- Reconstructing conversations with Follow TCP Stream
+- Finding credentials sent in clear text over HTTP and recommending HTTPS as the fix
+
+![Lab 3 result](../images/lab3.png)
+![Lab 4 result](../images/lab4.png)
+![Lab 5 result](../images/lab5.png)
+![Lab 6 result](../images/lab6.png)
 
 ## Conclusion
 
-Both machines are on the same `10.0.0.0/24` network, receive their IP addresses automatically via DHCP, and communicate successfully. The lab is ready for the coming weeks.
+Both machines are on the same `10.0.0.0/24` network, receive their IP addresses automatically via DHCP, and communicate successfully. The lab environment is ready, and the extra Wireshark labs gave me hands-on practice with traffic analysis for the coming weeks.
 
 ## Useful Commands
 
 ```bash
 # Linux
-ifconfig          # or: ip a
+ip a              # or: ifconfig
 ping <ip>
 
 # Windows
