@@ -1,1 +1,246 @@
 
+# Footprinting and Reconnaissance: networkwalks.com
+
+**Networkwalks - B084L | Week 2**
+
+> [!WARNING]
+> **Disclaimer:** this work is for **educational purposes only**. All commands were run as part of a **supervised training exercise**, following the instructor's instructions, against the training organization's own website. Never scan or test a system without **explicit written authorization** from its owner. The author takes no responsibility for any misuse of this information.
+
+## Objective
+
+Collect information about a target website using reconnaissance tools on Kali Linux, **before** any attack. Only reconnaissance was performed: no exploitation, no vulnerability scan, no port scan.
+
+## Environment
+
+| Item | Detail |
+|---|---|
+| **OS** | Kali Linux |
+| **Target** | `networkwalks.com` (training organization website) |
+| **Test date** | November 2026 |
+| **Tools** | `whois`, `nslookup`, `curl`, `whatweb`, `wafw00f`, `dnsrecon` |
+| **Technique** | Passive and active reconnaissance (footprinting) |
+
+> **Passive** = the target's own servers are not contacted (`whois`, `nslookup`).
+> **Active** = we interact with the target, which can leave traces in its logs (`curl`, `whatweb`, `wafw00f`, `dnsrecon`).
+
+## Repository structure
+
+```
+.
+├── README.md
+└── images/
+    ├── whois.png
+    ├── nslookup.png
+    ├── curl.png
+    ├── whatweb.png
+    ├── wafw00f.png
+    └── dnsrecon.png
+```
+
+## Table of contents
+
+1. [Domain registration (WHOIS)](#1-domain-registration-whois)
+2. [IP address (nslookup)](#2-ip-address-nslookup)
+3. [HTTP headers (curl)](#3-http-headers-curl)
+4. [Technology fingerprinting (WhatWeb)](#4-technology-fingerprinting-whatweb)
+5. [Firewall detection (wafw00f)](#5-firewall-detection-wafw00f)
+6. [DNS enumeration (dnsrecon)](#6-dns-enumeration-dnsrecon)
+7. [Email security: SPF, DKIM, DMARC](#7-email-security-spf-dkim-dmarc)
+8. [Target summary](#8-target-summary)
+9. [Findings](#9-findings-low-severity)
+10. [What I learned](#10-what-i-learned)
+
+---
+
+## 1. Domain registration (WHOIS)
+
+**Command:**
+
+```bash
+whois networkwalks.com
+```
+
+Queries the public domain registration database (passive).
+
+![whois](images/whois.png)
+
+| Field | Value |
+|---|---|
+| Registrar | GoDaddy |
+| Created | 2019-11-06 |
+| Expires | 2027-11-06 |
+| Name servers | NS6135 / NS6136.HOSTGATOR.COM |
+| Status | `clientTransferProhibited`, `clientDeleteProhibited` (locks) |
+| DNSSEC | unsigned |
+
+> The domain is registered at GoDaddy, but DNS and hosting are at HostGator.
+
+---
+
+## 2. IP address (nslookup)
+
+**Command:**
+
+```bash
+nslookup networkwalks.com
+```
+
+Resolves the domain name to an IP address (passive).
+
+![nslookup](images/nslookup.png)
+
+| Item | Value |
+|---|---|
+| IP address | `192.232.216.135` |
+| Answer type | Non-authoritative (served from a DNS cache) |
+
+---
+
+## 3. HTTP headers (curl)
+
+**Command:**
+
+```bash
+curl -I https://networkwalks.com
+```
+
+Retrieves only the HTTP response headers (active).
+
+![curl](images/curl.png)
+
+| Header | Meaning |
+|---|---|
+| `HTTP/2 200` | The site responds normally |
+| `server: Apache` | Web server |
+| `link: .../wp-json/` | **WordPress** site, REST API exposed |
+| `__wpdm_client` cookie | **WordPress Download Manager** plugin |
+| `x-endurance-cache-level` | HostGator / Endurance hosting |
+
+> Missing security headers: `Strict-Transport-Security`, `Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`.
+
+---
+
+## 4. Technology fingerprinting (WhatWeb)
+
+**Command:**
+
+```bash
+whatweb networkwalks.com
+```
+
+Identifies the technologies used by the website (active).
+
+![whatweb](images/whatweb.png)
+
+| Technology | Detail |
+|---|---|
+| Redirect | `301` from `http` to `https` |
+| Web server | Apache |
+| CMS | WordPress 7.1.4 |
+| Plugin | WordPress Download Manager 3.3.76 |
+| Library | jQuery 3.7.1 |
+| Page title | Networkwalks Academy |
+
+> Fingerprinting tools can misdetect versions, so the WordPress version should be confirmed manually before being reported as a finding.
+
+---
+
+## 5. Firewall detection (wafw00f)
+
+**Command:**
+
+```bash
+wafw00f networkwalks.com
+```
+
+Detects a Web Application Firewall (WAF) by sending 2 requests (active).
+
+![wafw00f](images/wafw00f.png)
+
+| Item | Value |
+|---|---|
+| WAF detected | **ModSecurity (SpiderLabs)** |
+| Requests sent | 2 |
+
+---
+
+## 6. DNS enumeration (dnsrecon)
+
+**Command:**
+
+```bash
+dnsrecon -d networkwalks.com
+```
+
+Lists the DNS records of the domain (active).
+
+![dnsrecon](images/dnsrecon.png)
+
+| Record | Value |
+|---|---|
+| SOA / NS | `ns6135` / `ns6136.hostgator.com` |
+| A | `192.232.216.135` |
+| MX | `mail.networkwalks.com` (same IP as the website) |
+| TXT (SPF) | `v=spf1 +a +mx +ip4:50.87.144.87 +include:websitewelcome.com ~all` |
+| SRV | `_autodiscover._tcp` (cPanel) |
+| DNSSEC | Not configured |
+| BIND | Version `9.16.23-RH` exposed |
+
+---
+
+## 7. Email security: SPF, DKIM, DMARC
+
+| Protection | Question | Role |
+|---|---|---|
+| **SPF** | Who is allowed to send? | List of authorized sending servers (DNS TXT record) |
+| **DKIM** | Is the email authentic and unmodified? | Digital signature checked with a public key in DNS |
+| **DMARC** | What to do if SPF or DKIM fails? | Policy: `none`, `quarantine` or `reject` |
+
+SPF ending: `-all` (strict), `~all` (soft fail), `+all` (allows everyone, dangerous).
+
+**Still to verify:**
+
+```bash
+dig TXT _dmarc.networkwalks.com
+dig TXT default._domainkey.networkwalks.com
+```
+
+---
+
+## 8. Target summary
+
+| Item | Information |
+|---|---|
+| Domain registrar | GoDaddy |
+| Hosting and DNS | HostGator (cPanel) |
+| Web server | Apache |
+| CMS | WordPress |
+| Plugin | WordPress Download Manager |
+| Protection | ModSecurity WAF |
+| IP address | `192.232.216.135` (website and mail on the same machine) |
+
+---
+
+## 9. Findings (low severity)
+
+| # | Finding | Recommendation |
+|---|---|---|
+| 1 | DNSSEC not configured | Enable DNSSEC if supported |
+| 2 | SPF uses `~all` (soft fail) | Move to `-all` after testing |
+| 3 | BIND version exposed (hosting provider side) | Report to the hosting provider |
+| 4 | WordPress and plugin versions visible | Hide version information, keep updated |
+| 5 | Missing security headers | Add HSTS, CSP, X-Frame-Options, X-Content-Type-Options |
+| 6 | Public `info@` email address | Use a contact form or alias |
+| 7 | DKIM and DMARC not yet verified | Test with `dig`, configure DMARC if missing |
+
+---
+
+## 10. What I learned
+
+- Difference between passive and active reconnaissance
+- Reading HTTP headers, DNS records and WHOIS data
+- Identifying a website's technologies and detecting a WAF
+- Understanding SPF, DKIM and DMARC
+- Documenting results clearly, one file per tool
+
+> **Confidentiality:** in all screenshots, sensitive data (terminal username and hostname, DNS resolver of my own connection, cookie values, verification tokens, contact details) is hidden with solid black boxes.
