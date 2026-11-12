@@ -62,7 +62,7 @@ whois networkwalks.com
 
 Queries the public domain registration database (passive).
 
-![whois](images/whois.png)
+![whois](.images/whois.png)
 
 | Field | Value |
 |---|---|
