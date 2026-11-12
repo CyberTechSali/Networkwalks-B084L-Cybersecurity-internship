@@ -1,144 +1,143 @@
+# 🕵️ Maltego: Installation, Activation and First OSINT Investigation
 
-# 🕵️ Maltego : Installation, activation et première investigation OSINT
+> Module: Reconnaissance / OSINT
+> Tool: **Maltego Graph (Desktop) 4.14.0**
+> Platform: Windows (.exe + Java x64)
 
-> Module : Reconnaissance / OSINT
-> Outil : **Maltego Graph (Desktop) 4.14.0**
-> Plateforme : Windows (.exe + Java x64)
+## 📌 Overview
 
-## 📌 Présentation
+**Maltego** is an OSINT (Open Source Intelligence) investigation tool that represents information as **graphs**. It links entities (domains, emails, people, IPs, etc.) using **Transforms**, which are automated queries to data sources.
 
-**Maltego** est un outil d'investigation OSINT (Open Source Intelligence) qui représente les informations sous forme de **graphes**. Il relie des entités (domaines, emails, personnes, IP, etc.) grâce à des **Transforms**, des requêtes automatisées vers des sources de données.
-
-Ce document explique :
-1. Le téléchargement et l'installation
-2. L'activation avec un Maltego ID
-3. La configuration des sources de données
-4. Une première investigation : trouver les adresses email liées à un domaine
+This guide covers:
+1. Downloading and installing Maltego
+2. Activating it with a Maltego ID
+3. Configuring data sources
+4. A first investigation: finding email addresses linked to a domain
 
 ---
 
-## 1. Téléchargement
+## 1. Download
 
-1. Aller sur la page officielle : https://www.maltego.com/downloads/
-2. Choisir le système d'exploitation **Windows** et l'extension **.exe + Java (x64)**
-3. Cliquer sur **Download Maltego Graph** (version 4.14.0)
+1. Go to the official page: https://www.maltego.com/downloads/
+2. Select the **Windows** operating system and the **.exe + Java (x64)** extension
+3. Click **Download Maltego Graph** (version 4.14.0)
 
-![Téléchargement](images/1.png)
+![Download](images/12.png)
 
 ## 2. Installation
 
-1. Lancer l'installeur téléchargé
-2. Fermer les autres applications, puis cliquer sur **Next >**
-3. Suivre l'assistant jusqu'à la fin de l'installation
+1. Run the downloaded installer
+2. Close all other applications, then click **Next >**
+3. Follow the wizard until the installation is complete
 
-![Installation](images/2.png)
+![Installation](images/13.png)
 
-## 3. Activation du produit
+## 3. Product Activation
 
-### 3.1 Choix du mode d'activation
+### 3.1 Choosing the activation method
 
-Au premier lancement, sélectionner **MALTEGO ID** (pour un nouvel utilisateur), puis **Next**.
+On first launch, select **MALTEGO ID** (for new users), then click **Next**.
 
-![Options d'activation](images/3.png)
+![Activation options](images/14.png)
 
-Choisir **Online Activation (Default)**, puis **Next**.
+Choose **Online Activation (Default)**, then click **Next**.
 
-![Activation en ligne](images/4.png)
+![Online activation](images/15.png)
 
-### 3.2 Contrat de licence
+### 3.2 License agreement
 
-Lire et cocher **Accept**, puis **Next**.
+Read the agreement, tick **Accept**, then click **Next**.
 
-![Licence](images/05-licence.png)
+![License agreement](images/16.png)
 
-### 3.3 Connexion via le navigateur
+### 3.3 Browser login
 
-Cliquer sur **Browser Login** : la page de connexion s'ouvre dans le navigateur.
+Click **Browser Login**. The login page opens in your default browser.
 
-![Login link options](images/06-login-link.png)
+![Login link options](images/17.png)
 
-Le client Maltego attend alors le signal d'authentification du navigateur.
+The Maltego client then waits for the authentication signal from the browser.
 
-![Attente de connexion](images/07-attente-login.png)
+![Waiting for login](images/1.png)
 
-### 3.4 Création du Maltego ID (si pas de compte)
+### 3.4 Creating a Maltego ID (if you have no account)
 
-1. Sur la page de connexion, cliquer sur **CREATE ID**
+1. On the login page, click **CREATE ID**
 
-![Page de login](images/08-page-login.png)
+![Login page](images/2.png)
 
-2. Remplir l'email (valide), le prénom et le nom, puis cliquer sur **CONTINUE**
+2. Enter a valid email address, your first name and last name, then click **CONTINUE**
 
-![Création du compte](images/09-creation-id.png)
+![Create Maltego ID](images/3.png)
 
-3. Après validation, le message **Authentication complete** apparaît : fermer le navigateur et revenir à l'application.
+3. Once validated, the **Authentication complete** message appears. Close the browser and return to the application.
 
-![Authentification terminée](images/10-auth-complete.png)
+![Authentication complete](images/4.png)
 
-### 3.5 Activation réussie
+### 3.5 Successful activation
 
-Le message **Activation Successful!** confirme l'activation. Cliquer sur **Next**.
+The **Activation Successful!** message confirms that Maltego is activated. Click **Next**.
 
-![Activation réussie](images/11-activation-ok.png)
+![Activation successful](images/5.png)
 
-## 4. Configuration des sources de données
+## 4. Data Sources Configuration
 
-1. **Select Data Sources** : laisser **Utilities** coché, puis **Next**
+1. **Select Data Sources**: keep **Utilities** checked, then click **Next**
 
-![Sources de données](images/12-select-data-sources.png)
+![Select data sources](images/6.png)
 
-2. **Download Data Sources** : Maltego télécharge les transforms (ex. 238 Transforms, 245 Entities, 79 Transform Sets, 14 Machines)
+2. **Download Data Sources**: Maltego downloads the transforms (e.g. 238 Transforms, 245 Entities, 79 Transform Sets, 14 Machines)
 
-![Téléchargement des sources](images/13-download-data-sources.png)
+![Download data sources](images/7.png)
 
-3. Poursuivre l'assistant (T&Cs, options du navigateur, mode de confidentialité) jusqu'à **Finish**.
+3. Continue through the wizard (T&Cs, web browser options, privacy mode) until **Finish**.
 
-## 5. Interface de Maltego
+## 5. Maltego Interface
 
-Après la configuration, l'espace de travail s'ouvre avec :
-- **Entity Palette** : la liste des types d'entités
-- **Graph** : la zone centrale où se construit l'investigation
-- **Run View / Transforms** : lancement des transforms et des machines
-- **Detail View / Properties** : détails de l'entité sélectionnée
-- **Overview** : vue globale du graphe
+Once the configuration is done, the workspace opens with:
+- **Entity Palette**: the list of available entity types
+- **Graph**: the central area where the investigation is built
+- **Run View / Transforms**: used to launch transforms and machines
+- **Detail View / Properties**: details of the selected entity
+- **Overview**: a global view of the graph
 
-![Interface](images/14-interface.png)
+![Interface](images/8.png)
 
-## 6. Première investigation : emails d'un domaine
+## 6. First Investigation: Emails of a Domain
 
-### Étape 1 : Ajouter une entité Domain
-1. Dans l'**Entity Palette**, rechercher `dom` et glisser l'entité **Domain** dans le graphe
-2. Double-cliquer dessus et renseigner le **Domain Name** (ex. `networkwalks.com`)
-3. Valider avec **OK**
+### Step 1: Add a Domain entity
+1. In the **Entity Palette**, search for `dom` and drag the **Domain** entity onto the graph
+2. Double-click it and set the **Domain Name** (e.g. `networkwalks.com`)
+3. Confirm with **OK**
 
-![Entité Domain](images/15-entite-domain.png)
+![Domain entity](images/9.png)
 
-### Étape 2 : Lancer un transform
-1. Clic droit sur l'entité, puis ouvrir **Run Transforms**
-2. Choisir **Email addresses from Domain**
+### Step 2: Run a transform
+1. Right-click the entity, then open **Run Transforms**
+2. Select **Email addresses from Domain**
 
-![Run Transforms](images/16-run-transforms.png)
+![Run transforms](images/10.png)
 
-### Étape 3 : Analyser le résultat
-Le graphe affiche le domaine relié à l'adresse email trouvée (ex. `info@networkwalks.com`). La fenêtre **Output - Transform Output** montre l'exécution des transforms et la consommation de crédits.
+### Step 3: Analyze the result
+The graph shows the domain linked to the email address found (e.g. `info@networkwalks.com`). The **Output - Transform Output** window shows the transform execution and credit consumption.
 
-![Résultat](images/17-resultat.png)
+![Result](images/11.png)
 
-## 📝 Ce qu'il faut retenir
+## 📝 Key Takeaways
 
-| Notion | Description |
+| Concept | Description |
 |---|---|
-| **Entity** | Un élément d'information (domaine, email, personne, etc.) |
-| **Transform** | Une requête automatisée qui produit de nouvelles entités à partir d'une entité |
-| **Machine** | Une suite de transforms automatisée |
-| **Maltego ID** | Compte nécessaire pour activer et utiliser le logiciel |
-| **Crédits** | Chaque transform consomme des crédits selon le plan utilisé |
+| **Entity** | A piece of information (domain, email, person, etc.) |
+| **Transform** | An automated query that produces new entities from an existing one |
+| **Machine** | An automated sequence of transforms |
+| **Maltego ID** | Account required to activate and use the software |
+| **Credits** | Each transform consumes credits depending on your plan |
 
-## ⚠️ Avertissement légal et éthique
+## ⚠️ Legal and Ethical Disclaimer
 
-Maltego doit être utilisé uniquement sur des cibles pour lesquelles vous avez une **autorisation** (audit, pentest, formation) ou sur des données publiques et dans le respect de la loi (RGPD, lois locales sur la protection des données). L'auteur décline toute responsabilité en cas d'usage abusif.
+Use Maltego only on targets you are **authorized** to investigate (audit, pentest, training) or on public data, and always in compliance with the law (GDPR, local data protection laws). The author accepts no responsibility for misuse.
 
-## 📚 Ressources
+## 📚 Resources
 
-- Site officiel : https://www.maltego.com
-- Téléchargement : https://www.maltego.com/downloads/
+- Official website: https://www.maltego.com
+- Download page: https://www.maltego.com/downloads/
