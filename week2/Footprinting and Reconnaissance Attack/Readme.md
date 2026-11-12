@@ -1,4 +1,3 @@
-
 # Footprinting and Reconnaissance: networkwalks.com
 
 **Networkwalks - B084L | Week 2**
@@ -26,8 +25,9 @@ Collect information about a target website using reconnaissance tools on Kali Li
 ## Repository structure
 
 ```
-.
-├── README.md
+week2/
+├── Footprinting and Reconnaissance Attack/
+│   └── README.md
 └── images/
     ├── whois.png
     ├── nslookup.png
@@ -87,7 +87,7 @@ nslookup networkwalks.com
 
 Resolves the domain name to an IP address (passive).
 
-![nslookup](images/nslookup.png)
+![nslookup](../images/nslookup.png)
 
 | Item | Value |
 |---|---|
@@ -106,7 +106,7 @@ curl -I https://networkwalks.com
 
 Retrieves only the HTTP response headers (active).
 
-![curl](images/curl.png)
+![curl](../images/curl.png)
 
 | Header | Meaning |
 |---|---|
@@ -130,7 +130,7 @@ whatweb networkwalks.com
 
 Identifies the technologies used by the website (active).
 
-![whatweb](images/whatweb.png)
+![whatweb](../images/whatweb.png)
 
 | Technology | Detail |
 |---|---|
@@ -155,7 +155,7 @@ wafw00f networkwalks.com
 
 Detects a Web Application Firewall (WAF) by sending 2 requests (active).
 
-![wafw00f](images/wafw00f.png)
+![wafw00f](../images/wafw00f.png)
 
 | Item | Value |
 |---|---|
@@ -174,7 +174,7 @@ dnsrecon -d networkwalks.com
 
 Lists the DNS records of the domain (active).
 
-![dnsrecon](images/dnsrecon.png)
+![dnsrecon](../images/dnsrecon.png)
 
 | Record | Value |
 |---|---|
