@@ -123,6 +123,19 @@ The graph shows the domain linked to the email address found (e.g. `info@network
 
 ![Result](images/17.png)
 
+## 7. Going Further: DNS Names and Transform Output
+
+After the email investigation, we ran **To DNS Name** on the Domain entity. The graph now shows the subdomains found for `networkwalks.com`: `www`, `ftp`, `mail` and `webmail`, plus the mail server (MX) and the email address `info@networkwalks.com`.
+
+The **Output - Transform Output** window at the bottom lists each executed transform. Two things to notice:
+
+- Each transform ends with `completed in ... ms`, even when it returns few or no results. This is not an error.
+- The credit message shows the consumption (`You have consumed 41 credits. You have 159 credits remaining`).
+
+> ⚠️ The orange `Zone transfer AXFR refused` message is **normal**. Well-configured DNS servers refuse zone transfers.
+
+![DNS names and transform output](images/18.png)
+
 ## 📝 Key Takeaways
 
 | Concept | Description |
