@@ -22,7 +22,7 @@ This guide covers:
 2. Select the **Windows** operating system and the **.exe + Java (x64)** extension
 3. Click **Download Maltego Graph** (version 4.14.0)
 
-![Download](images/12.png)
+![Download](images/1.png)
 
 ## 2. Installation
 
@@ -30,7 +30,7 @@ This guide covers:
 2. Close all other applications, then click **Next >**
 3. Follow the wizard until the installation is complete
 
-![Installation](images/13.png)
+![Installation](images/2.png)
 
 ## 3. Product Activation
 
@@ -38,11 +38,11 @@ This guide covers:
 
 On first launch, select **MALTEGO ID** (for new users), then click **Next**.
 
-![Activation options](images/14.png)
+![Activation options](images/3.png)
 
 Choose **Online Activation (Default)**, then click **Next**.
 
-![Online activation](images/15.png)
+![Online activation](images/4.png)
 
 ### 3.2 License agreement
 
