@@ -48,47 +48,47 @@ Choose **Online Activation (Default)**, then click **Next**.
 
 Read the agreement, tick **Accept**, then click **Next**.
 
-![License agreement](images/16.png)
+![License agreement](images/5.png)
 
 ### 3.3 Browser login
 
 Click **Browser Login**. The login page opens in your default browser.
 
-![Login link options](images/17.png)
+![Login link options](images/6.png)
 
 The Maltego client then waits for the authentication signal from the browser.
 
-![Waiting for login](images/1.png)
+![Waiting for login](images/7.png)
 
 ### 3.4 Creating a Maltego ID (if you have no account)
 
 1. On the login page, click **CREATE ID**
 
-![Login page](images/2.png)
+![Login page](images/8.png)
 
 2. Enter a valid email address, your first name and last name, then click **CONTINUE**
 
-![Create Maltego ID](images/3.png)
+![Create Maltego ID](images/9.png)
 
 3. Once validated, the **Authentication complete** message appears. Close the browser and return to the application.
 
-![Authentication complete](images/4.png)
+![Authentication complete](images/10.png)
 
 ### 3.5 Successful activation
 
 The **Activation Successful!** message confirms that Maltego is activated. Click **Next**.
 
-![Activation successful](images/5.png)
+![Activation successful](images/11.png)
 
 ## 4. Data Sources Configuration
 
 1. **Select Data Sources**: keep **Utilities** checked, then click **Next**
 
-![Select data sources](images/6.png)
+![Select data sources](images/12.png)
 
 2. **Download Data Sources**: Maltego downloads the transforms (e.g. 238 Transforms, 245 Entities, 79 Transform Sets, 14 Machines)
 
-![Download data sources](images/7.png)
+![Download data sources](images/13.png)
 
 3. Continue through the wizard (T&Cs, web browser options, privacy mode) until **Finish**.
 
@@ -101,7 +101,7 @@ Once the configuration is done, the workspace opens with:
 - **Detail View / Properties**: details of the selected entity
 - **Overview**: a global view of the graph
 
-![Interface](images/8.png)
+![Interface](images/14.png)
 
 ## 6. First Investigation: Emails of a Domain
 
@@ -110,18 +110,18 @@ Once the configuration is done, the workspace opens with:
 2. Double-click it and set the **Domain Name** (e.g. `networkwalks.com`)
 3. Confirm with **OK**
 
-![Domain entity](images/9.png)
+![Domain entity](images/15.png)
 
 ### Step 2: Run a transform
 1. Right-click the entity, then open **Run Transforms**
 2. Select **Email addresses from Domain**
 
-![Run transforms](images/10.png)
+![Run transforms](images/16.png)
 
 ### Step 3: Analyze the result
 The graph shows the domain linked to the email address found (e.g. `info@networkwalks.com`). The **Output - Transform Output** window shows the transform execution and credit consumption.
 
-![Result](images/11.png)
+![Result](images/17.png)
 
 ## 📝 Key Takeaways
 
