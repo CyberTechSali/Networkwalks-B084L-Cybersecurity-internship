@@ -1,4 +1,3 @@
-
 # Module 1: Footprinting and Reconnaissance
 
 > Networkwalks B084L Cybersecurity Internship, Week 2
@@ -158,29 +157,10 @@ Screenshots are stored in the `screenshots/` folder and displayed next to each t
 - `wafw00f.png`
 - `dnsrecon.png`
 
-### Confidentiality: what to hide before publishing
+### Confidentiality
 
 > [!IMPORTANT]
-> Review **every** screenshot before uploading it to a public repository. Blur or crop the following:
-
-| What to hide | Where it appears | Why |
-|---|---|---|
-| **Your username and hostname** (`root@sali`, `/home/sali`) | Terminal prompt in every screenshot | Reveals your identity and machine name |
-| **Your DNS resolver** (`Server: 41.214.140.4`) | `nslookup` | Reveals your ISP / network and approximate location |
-| **Your public IP address** | Any tool output that shows it | Identifies your connection |
-| **Cookie values** (`__wpdm_client=...`) | `curl -I`, `whatweb` | Session or client identifiers should not be published |
-| **Verification tokens** (`google-site-verification=...`) | `dnsrecon` | Tied to the owner's Google account |
-| **Email addresses and phone numbers** | `whois` (registrar abuse contact), `whatweb` (`info@...`) | Avoid spam and phishing targeting |
-| **Registry Domain ID** | `whois` | Not needed, and identifies the registration |
-| **Any personal or internal data** | Anywhere | Names, internal hostnames, passwords, tokens, API keys |
-
-Tips:
-
-- Use a blur or solid black box. Do **not** use a light highlight or low-opacity mask, because it can be reversed.
-- Crop out the terminal prompt rather than only blurring it.
-- Check the file name, metadata (EXIF) and your editor's undo history before uploading.
-- If in doubt, make the repository **private** or ask your instructor what can be shared.
-- Never commit raw tool output files (`*-result.txt`) without checking them for the same sensitive items.
+> Before publishing screenshots, personal and sensitive data must be hidden with solid black boxes: terminal username and hostname, the DNS resolver and IP address of your own connection, cookie values, verification tokens, and personal contact details (emails, phone numbers). Never commit raw tool output files without reviewing them first.
 
 ## What I learned
 
