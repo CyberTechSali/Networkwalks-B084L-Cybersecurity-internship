@@ -1,5 +1,5 @@
 
-## 8. theHarvester: Passive Subdomain and Host Discovery
+##  theHarvester: Passive Subdomain and Host Discovery
 
 **theHarvester** is a command-line OSINT tool (included in Kali Linux) that gathers subdomains, IP addresses, emails and hosts for a domain from public sources.
 
