@@ -29,7 +29,7 @@ Download both archives:
 - `johnny_2.2_win.zip` (the graphical interface)
 - `john-1.9.0-jumbo-1-win64.zip` (the John the Ripper engine, Jumbo version recommended)
 
-![Downloading Johnny and John the Ripper](images/1.png)
+![Downloading Johnny and John the Ripper](week3/images/1.png)
 
 ---
 
