@@ -1,4 +1,3 @@
-
 # 🔐 Cracking Password-Protected PDFs with Johnny (John the Ripper GUI)
 
 This module is part of my **Cybersecurity Internship** at **NetworkWalks**.
@@ -29,7 +28,7 @@ Download both archives:
 - `johnny_2.2_win.zip` (the graphical interface)
 - `john-1.9.0-jumbo-1-win64.zip` (the John the Ripper engine, Jumbo version recommended)
 
-![Downloading Johnny and John the Ripper](week3/images/1.png)
+![Downloading Johnny and John the Ripper](../images/1.png)
 
 ---
 
@@ -37,7 +36,7 @@ Download both archives:
 
 Launch the `johnny` installer and follow the **Setup Wizard**.
 
-![Johnny Setup Wizard](images/2.png)
+![Johnny Setup Wizard](../images/2.png)
 
 ---
 
@@ -46,15 +45,15 @@ Launch the `johnny` installer and follow the **Setup Wizard**.
 On first launch, Johnny asks for the path to the John the Ripper executable.
 Click **Browse** to select it.
 
-![Setting the John the Ripper path](images/3.png)
+![Setting the John the Ripper path](../images/3.png)
 
 Navigate to the `run` folder of John the Ripper Jumbo and select the `john` (or `john.exe`) file.
 
-![Selecting john.exe](images/4.png)
+![Selecting john.exe](../images/4.png)
 
 Once the path is set, Johnny automatically detects the installed version (here *John the Ripper 1.9.0-jumbo-1 OMP [cygwin 64-bit x86_64 AVX2 AC]*).
 
-![John the Ripper detected](images/5.png)
+![John the Ripper detected](../images/5.png)
 
 ---
 
@@ -62,11 +61,11 @@ Once the path is set, Johnny automatically detects the installed version (here *
 
 On the desktop, there are several locked PDFs: `My Locked PDF1`, `My Locked PDF2`, `My Locked PDF3`.
 
-![Locked PDF files on the desktop](images/6.png)
+![Locked PDF files on the desktop](../images/6.png)
 
 Trying to open one (here with Microsoft Edge) prompts for a password.
 
-![Password prompt when opening the PDF](images/7.png)
+![Password prompt when opening the PDF](../images/7.png)
 
 ---
 
@@ -76,15 +75,15 @@ We use the online tool **Online HashCrack** ([onlinehashcrack.com](https://www.o
 
 Go to **Tools → PDF hash extractor**.
 
-![Tools menu - PDF hash extractor](images/8.png)
+![Tools menu - PDF hash extractor](../images/8.png)
 
 Select the locked PDF file to analyze.
 
-![Uploading the PDF file](images/9.png)
+![Uploading the PDF file](../images/9.png)
 
 The extracted hash appears in the output field.
 
-![Extracted PDF hash](images/10.png)
+![Extracted PDF hash](../images/10.png)
 
 ---
 
@@ -92,11 +91,11 @@ The extracted hash appears in the output field.
 
 Copy the extracted hash and paste it into a text editor (Notepad).
 
-![Pasting the hash into Notepad](images/11.png)
+![Pasting the hash into Notepad](../images/11.png)
 
 Save the file with a clear name, e.g. `hash1.txt`.
 
-![Saving the hash1.txt file](images/12.png)
+![Saving the hash1.txt file](../images/12.png)
 
 > Repeat steps 5 and 6 for each PDF (`hash2.txt`, `hash3.txt`, etc.).
 
@@ -106,7 +105,7 @@ Save the file with a clear name, e.g. `hash1.txt`.
 
 In Johnny, click **Open password file** and select the previously created `hash1.txt` file.
 
-![Opening the hash file in Johnny](images/13.png)
+![Opening the hash file in Johnny](../images/13.png)
 
 ---
 
@@ -116,7 +115,7 @@ Click **Start new attack**. Johnny/John the Ripper will attempt to recover the p
 
 Once the password is found, it is displayed directly in the **Password** column (here: `good-luck`), with the progress bar at 100% and status *1 cracked*.
 
-![Password cracked - good-luck](images/14.png)
+![Password cracked - good-luck](../images/14.png)
 
 ---
 
@@ -124,11 +123,11 @@ Once the password is found, it is displayed directly in the **Password** column 
 
 Go back to the locked PDF and enter the recovered password (`good-luck`).
 
-![Entering the recovered password](images/15.png)
+![Entering the recovered password](../images/15.png)
 
 The PDF opens successfully 🎉
 
-![PDF successfully unlocked](images/16.png)
+![PDF successfully unlocked](../images/16.png)
 
 ---
 
@@ -136,15 +135,15 @@ The PDF opens successfully 🎉
 
 It is possible to load several hash files at the same time (e.g. `hash2` and `hash3`) by selecting them together in the open dialog.
 
-![Opening multiple hash files](images/17.png)
+![Opening multiple hash files](../images/17.png)
 
 Run the attack again with **Start new attack**.
 
-![Starting a new attack on multiple hashes](images/18.png)
+![Starting a new attack on multiple hashes](../images/18.png)
 
 Both passwords are recovered: `password1` and `1qaz2wsx` (100% — 2/2 cracked).
 
-![Two passwords cracked](images/19.png)
+![Two passwords cracked](../images/19.png)
 
 ---
 
@@ -152,7 +151,7 @@ Both passwords are recovered: `password1` and `1qaz2wsx` (100% — 2/2 cracked).
 
 Right-click on a recovered password to copy it directly, or to include/exclude it from a future attack.
 
-![Context menu - copy password](images/20.png)
+![Context menu - copy password](../images/20.png)
 
 ---
 
