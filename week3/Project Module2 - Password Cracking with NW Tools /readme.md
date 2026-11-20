@@ -26,7 +26,7 @@ Go to [https://networkwalks.com/hash-calculator/](https://networkwalks.com/hash-
 
 The tool offers three modes: **Text**, **File**, and **PDF**. Select the **PDF** tab, then click the upload area (or drag and drop a PDF). The page explicitly states that nothing is uploaded — the PDF is parsed **locally** in the browser.
 
-![Hash Calculator - PDF tab](../images/21.png)
+![Hash Calculator - PDF tab](../images/24.png)
 
 ---
 
@@ -34,7 +34,7 @@ The tool offers three modes: **Text**, **File**, and **PDF**. Select the **PDF**
 
 Click to browse the file system and select the locked PDF file (here: `My Locked PDF1 (for NW Tools Lab WK3-PM2).pdf`).
 
-![Selecting the locked PDF file](../images/22.png)
+![Selecting the locked PDF file](../images/25.png)
 
 ---
 
@@ -44,7 +44,7 @@ Once the PDF is parsed, the tool confirms that the file is encrypted and extract
 
 Click **Copy** to copy the hash to the clipboard (or **Download** to save it as a file).
 
-![Extracted PDF hash](../images/23.png)
+![Extracted PDF hash](../images/26.png)
 
 ---
 
@@ -56,7 +56,7 @@ Paste the `$pdf$...` hash obtained in Step 3, then run the attack. The tool trie
 
 Once a match is found, the password is displayed: **`password1`** ✅
 
-![Password cracked successfully - password1](../images/24.png)
+![Password cracked successfully - password1](../images/27.png)
 
 ---
 
@@ -64,7 +64,7 @@ Once a match is found, the password is displayed: **`password1`** ✅
 
 Open the locked PDF and enter the recovered password (`password1`).
 
-![Entering the recovered password](../images/25.png)
+![Entering the recovered password](../images/28.png)
 
 The PDF opens successfully, revealing the captured flag:
 
@@ -72,7 +72,7 @@ The PDF opens successfully, revealing the captured flag:
 nw{networkwalks_flag1_jtr_270521_1}
 ```
 
-![PDF successfully unlocked with flag](../images/26.png)
+![PDF successfully unlocked with flag](../images/29.png)
 
 ---
 
