@@ -155,6 +155,30 @@ Right-click on a recovered password to copy it directly, or to include/exclude i
 
 ---
 
+## Step 12 — Verify the remaining cracked PDFs
+
+Open `My Locked PDF3.pdf` and enter the second recovered password (`1qaz2wsx`).
+
+![Entering the recovered password for PDF3](../images/21.png)
+
+The PDF opens successfully, revealing the captured flag:
+
+```
+nw{networkwalks_flag_260821_1}
+```
+
+![PDF3 successfully unlocked with flag](../images/22.png)
+
+Likewise, `My Locked PDF2.pdf` opens successfully with its own password, revealing another flag:
+
+```
+nw{networkwalks_persistence_jtr_270521}
+```
+
+![PDF2 successfully unlocked with flag](../images/23.png)
+
+---
+
 ## 🧠 Workflow Summary
 
 ```
